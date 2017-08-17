@@ -61,26 +61,15 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
-    if event.message.text=="天気":
-        city_code = 130010
-        url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city={}'.format(city_code)
-        headers = {"content-type":"application/json"}
-        r = requests.get(url, headers=headers)
-        data = r.json()
-        text = data['description']['text']
-        content = TextSendMessage(text=text)
-    elif event.message.text == "にゃあ":
-        text = "わん"
-        content = TextSendMessage(text=text)
-    elif event.message.text == "カルーセル":
+    if event.message.text == "カルーセル":
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ',actions=[
+            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ/f375x281',actions=[
                 URITemplateAction(
                     label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
                 URITemplateAction(
                     label='盛り上がりのシーンから見る', uri='https://live.line.me/channels/60540/broadcast/4329656?t=360s')
             ]),
-            CarouselColumn(text='チャンネル名 ▶36,131 ♥939,597\n○○がフォロー中', title='タイトル', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ',actions=[
+            CarouselColumn(text='チャンネル名 ▶36,131 ♥939,597\n○○がフォロー中', title='タイトル', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ/f375x281',actions=[
                 URITemplateAction(
                     label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
                 URITemplateAction(
