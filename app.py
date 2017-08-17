@@ -74,20 +74,21 @@ def message_text(event):
         content = TextSendMessage(text=text)
     elif event.message.text == "カルーセル":
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='hoge1', title='fuga1', actions=[
+            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ',actions=[
                 URITemplateAction(
-                    label='Go to line.me', uri='https://line.me'),
-                PostbackTemplateAction(label='ping', data='ping')
+                    label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
+                URITemplateAction(
+                    label='盛り上がりのシーンから見る', uri='https://live.line.me/channels/60540/broadcast/4329656?t=360s')
             ]),
-            CarouselColumn(text='hoge2', title='fuga2', actions=[
-                PostbackTemplateAction(
-                    label='ping with text', data='ping',
-                    text='ping'),
-                MessageTemplateAction(label='Translate Rice', text='米')
+            CarouselColumn(text='チャンネル名 ▶36,131 ♥939,597\n○○がフォロー中', title='タイトル', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ',actions=[
+                URITemplateAction(
+                    label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
+                URITemplateAction(
+                    label='盛り上がりのシーンから見る', uri='https://live.line.me/channels/60540/broadcast/4329656?t=360s')
             ]),
         ])
         template_message = TemplateSendMessage(
-            alt_text='Buttons alt text', template=carousel_template)
+            alt_text='altaltalt', template=carousel_template)
         content = template_message
     elif re.match("^http", event.message.text):
         url = 'https://graph.facebook.com/'
