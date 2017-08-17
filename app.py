@@ -12,9 +12,6 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-from janome.tokenizer import Tokenizer
-t = Tokenizer()
-
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
@@ -76,11 +73,7 @@ def message_text(event):
         profile = line_bot_api.get_profile(event.source.user_id)
         text = "{0}\n{1}\n{2}\n{3}".format(profile.display_name, profile.user_id, profile.picture_url, profile.status_message)
     else:
-        text = ""
-        for token in t.tokenize(event.message.text):
-            tmp = token + '\n'
-            text += tmp
-        #text = event.message.text + "って言ったね"
+        text = event.message.text + "って言ったね"
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=text)
