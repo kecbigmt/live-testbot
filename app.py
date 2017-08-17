@@ -3,7 +3,7 @@ import requests, json, re, os
 from flask import Flask, request, abort
 
 from linebot import (
-    LineBotApi, WebhookHandler
+    LineBotApi, WebhookHandler, CarouselTemplate, CarouselColumn
 )
 from linebot.exceptions import (
     InvalidSignatureError
@@ -58,8 +58,27 @@ def message_text(event):
         r = requests.get(url, headers=headers)
         data = r.json()
         text = data['description']['text']
+        content = TextSendMessage(text=text)
     elif event.message.text == "にゃあ":
         text = "わん"
+        content = TextSendMessage(text=text)
+    elif event.message.text == "カルーセル":
+        carousel_template = CarouselTemplate(columns=[
+            CarouselColumn(text='hoge1', title='fuga1', actions=[
+                URITemplateAction(
+                    label='Go to line.me', uri='https://line.me'),
+                PostbackTemplateAction(label='ping', data='ping')
+            ]),
+            CarouselColumn(text='hoge2', title='fuga2', actions=[
+                PostbackTemplateAction(
+                    label='ping with text', data='ping',
+                    text='ping'),
+                MessageTemplateAction(label='Translate Rice', text='米')
+            ]),
+        ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=carousel_template)
+        content = template_message
     elif re.match("^http", event.message.text):
         url = 'https://graph.facebook.com/'
         payload = {'id':event.message.text}
@@ -69,14 +88,17 @@ def message_text(event):
             text = "コメント数:{0}\nシェア数:{1}".format(data['share']['comment_count'],data['share']['share_count'])
         else:
             text = r.headers['WWW-Authenticate']
+        content = TextSendMessage(text=text)
     elif re.match("(僕|私|俺|ぼく|わたし|おれ)は(誰|だれ)", event.message.text):
         profile = line_bot_api.get_profile(event.source.user_id)
         text = "{0}\n{1}\n{2}\n{3}".format(profile.display_name, profile.user_id, profile.picture_url, profile.status_message)
+        content = TextSendMessage(text=text)
     else:
         text = event.message.text + "って言ったね"
+        content = TextSendMessage(text=text)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=text)
+        content
     )
 
 if __name__ == "__main__":
