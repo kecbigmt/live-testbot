@@ -3,13 +3,13 @@ import requests, json, re, os
 from flask import Flask, request, abort
 
 from linebot import (
-    LineBotApi, WebhookHandler, CarouselTemplate, CarouselColumn
+    LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, CarouselTemplate, CarouselColumn
 )
 
 app = Flask(__name__)
