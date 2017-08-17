@@ -63,7 +63,7 @@ def callback():
 def message_text(event):
     if event.message.text == "カルーセル":
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnailImageUrl='https://yt3.ggpht.com/-oYpsBjpDS9I/AAAAAAAAAAI/AAAAAAAAAAA/hVbcOkYbAhM/s900-c-k-no-mo-rj-c0xffffff/photo.jpg',actions=[
+            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnailImageUrl='https://live-testbot.herokuapp.com/neo.jpg',actions=[
                 URITemplateAction(
                     label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
                 URITemplateAction(
