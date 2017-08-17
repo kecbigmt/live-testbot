@@ -10,10 +10,17 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
-    MessageTemplateAction,
-    URITemplateAction, PostbackTemplateAction,
-    CarouselTemplate, CarouselColumn
+    SourceUser, SourceGroup, SourceRoom,
+    TemplateSendMessage, ConfirmTemplate, MessageTemplateAction,
+    ButtonsTemplate, URITemplateAction, PostbackTemplateAction,
+    CarouselTemplate, CarouselColumn, PostbackEvent,
 )
+
+""" not imported:
+StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
+ImageMessage, VideoMessage, AudioMessage,
+UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent
+"""
 
 app = Flask(__name__)
 
