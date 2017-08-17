@@ -1,4 +1,4 @@
-import requests, json, re
+import requests, json, re, os
 
 from flask import Flask, request, abort
 
@@ -17,8 +17,18 @@ t = Tokenizer()
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi("xkIkdXiJirxcL5cMticl4/KB+IUdmHeQVIoP8piCf6rCIZkXxj55VgoIwoAzjOAuHF2FiSd7VHSf8ezUdrhzgJ1pNjUFLaI6RWLEWM11U54CevJYcH8OQHemO0UZGnHDNQsTZCzhURjvobDkb18dkQdB04t89/1O/w1cDnyilFU=")
-handler = WebhookHandler("ea93952db0d7dbe1d0a2957f6925b1af")
+# get channel_secret and channel_access_token from your environment variable
+channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
+channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
+if channel_secret is None:
+    print('Specify LINE_CHANNEL_SECRET as environment variable.')
+    sys.exit(1)
+if channel_access_token is None:
+    print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
+    sys.exit(1)
+
+line_bot_api = LineBotApi(channel_access_token)
+handler = WebhookHandler(channel_secret)
 
 @app.route("/", methods=['GET'])
 def hello():
