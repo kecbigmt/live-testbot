@@ -63,13 +63,13 @@ def callback():
 def message_text(event):
     if event.message.text == "カルーセル":
         carousel_template = CarouselTemplate(columns=[
-            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnailImageUrl='https://s3-us-west-2.amazonaws.com/lineapitest/hamburger_240.jpeg',actions=[
+            CarouselColumn(text='ねお　▶36,131 ♥939,597\n視聴履歴からのおすすめ', title='企画配信！！ねおのコスメ紹介LIVE', thumbnail_image_url='https://s3-us-west-2.amazonaws.com/lineapitest/hamburger_240.jpeg',actions=[
                 URITemplateAction(
                     label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
                 URITemplateAction(
                     label='盛り上がりのシーンから見る', uri='https://live.line.me/channels/60540/broadcast/4329656?t=360s')
             ]),
-            CarouselColumn(text='チャンネル名 ▶36,131 ♥939,597\n○○がフォロー中', title='タイトル', thumbnailImageUrl='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ/f375x281',actions=[
+            CarouselColumn(text='チャンネル名 ▶36,131 ♥939,597\n○○がフォロー中', title='タイトル', thumbnail_image_url='https://scdn.line-apps.com/obs/0hO3hM3WI5EBxVND_68-hvS2ppFmssGhUYdxYeKC5oFnMuGAUTdVVefnU1Ui97DF9CalReP3EzHXktB1EZ/f375x281',actions=[
                 URITemplateAction(
                     label='最初からみる', uri='https://live.line.me/channels/60540/broadcast/4329656'),
                 URITemplateAction(
